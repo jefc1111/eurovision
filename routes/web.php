@@ -17,4 +17,4 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('admin', 'AdminController@index');
+Route::get('the-secret-admin-page', 'AdminController@index');
