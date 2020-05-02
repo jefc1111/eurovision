@@ -17,6 +17,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/voting', function () {
+  return redirect('login');
+});
+
 Route::post('voting', 'VotingController@index');
 
 Route::get('the-secret-admin-page', 'AdminController@index');

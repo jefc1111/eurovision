@@ -3,14 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Country;
 
 class VotingController extends Controller
 {
     public function index()
     {
-        \Log::warning(request()->all());
-        $countries = \App\Country::all();
+        if (! request()->has('secret_code') || request()->get('secret_code') == '') {
+            return redirect(url('login'))->with('error', 'Please enter a code');
+        }
 
-        return view('voting')->with('countries', $countries);
+        $votingCountry = Country::where('code', '=', request()->get('secret_code'))->first();
+
+        if (! $votingCountry) {
+            return redirect(url('login'))->with('error', 'The code is not valid');
+        }
+
+        $countries = Country::all();
+
+        return view('voting')->with([
+            'countries' => $countries->except([$votingCountry->id]),
+            'votingCountry' => $votingCountry,
+            'scores' => [12, 10, 8]
+        ]);
     }
+
 }
