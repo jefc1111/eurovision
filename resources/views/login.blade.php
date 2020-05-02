@@ -11,11 +11,11 @@
                   <h4 class="my-0 font-weight-normal">Eurovision 2020 official voting system</h4>
               </div>
               <div class="card-body">
-                  <form>
+                  <form action="{{ url('voting') }}" method="post" >
                       <div class="form-group row">
                           <label for="inputPassword3" class="col-md-3 col-sm-4 col-form-label"><img src="assets/icons/keys-0.png" class="icon-16-4"> Secret access code</label>
                           <div class="col-sm-8 col-md-9">
-                              <input type="text" class="form-95" id="inputPassword3">
+                              <input name="secret_code" type="text" class="form-95" id="inputPassword3">
                           </div>
                       </div>
                       <div class="form-group row">
