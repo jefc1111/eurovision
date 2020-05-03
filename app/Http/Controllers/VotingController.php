@@ -19,7 +19,7 @@ class VotingController extends Controller
             return redirect(url('login'))->with('error', 'The code is not valid');
         }
 
-        $countries = Country::all();
+        $countries = $votingCountry->hasVotes() ? $votingCountry->getVotedCountries() : Country::where('votable', '=', 1)->get();
 
         return view('voting')->with([
             'countries' => $countries->except([$votingCountry->id]),
@@ -30,10 +30,6 @@ class VotingController extends Controller
 
     public function savePositionData($voterId)
     {
-      \Log::warning($voterId);
-      \Log::warning(request()->has('positionData'));
-      \Log::warning(request()->get('positionData'));
-      
         $votingCountry = Country::findOrFail($voterId);
 
         $votingCountry->votes = json_encode(request()->get('positionData'));

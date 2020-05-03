@@ -10,6 +10,9 @@
         <img class="float-right" src="{{ $votingCountry->getFlagUrl() }}">
       </h2>
     </span>
+    @if($votingCountry->voting_complete)
+    <h2>We have received your final scores.</h2>
+    @endif
     <div class="row">
       <div class="col-sm">
         <ul class="list-unstyled scores float-right">
@@ -24,7 +27,7 @@
       </div>
     <div class="col-sm">
       <ul class="list-unstyled countries float-left">
-        @foreach($countries->sortBy('name') as $country)
+        @foreach($countries as $country)
         <li id="country-{{ $country->id }}" data-id="{{ $country->id }}">
           <span class="font-weight-bold">
             {{ $country->name }}
@@ -42,8 +45,9 @@
 
       </div>
     </div>
-
+    @if(! $votingCountry->voting_complete)
     <button type="submit" class="btn btn-primary">Submit scores</button>
+    @endif
     <img class="float-right spinner" src="assets/icons/network_internet_pcs_installer-2.png">
     <span id="data-saving" class="float-right">Saving...</span>
     <span id="data-saved" class="float-right">All data saved</span>

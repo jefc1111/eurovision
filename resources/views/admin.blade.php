@@ -13,18 +13,26 @@
   <div class="container">
     <table class="table table-bordered">
       <thead>
+        <th>Id</th>
+        <th>Flag</th>
         <th>Name</th>
         <th>Secret code</th>
         <th>Song name</th>
-        <th>Sequence number</th>
-        <th>Flag</th>
+        <th>Sequence number</th>        
         <th>Voter name</th>
         <th>Vote data</th>
+        <th>Can be voted for</th>
         <th>Voting complete</th>
       </thead>
       <tbody>
         @foreach($countries->sortBy('name') as $country)
         <tr>
+          <td>
+            {{ $country->id }}
+          </td>
+          <td>
+            <img src="{{ $country->getFlagUrl() }}">
+          </td>
           <td>
             {{ $country->name }}
           </td>
@@ -38,13 +46,13 @@
             {{ $country->song_seq }}
           </td>
           <td>
-            <img src="{{ $country->getFlagUrl() }}">
-          </td>
-          <td>
             {{ $country->voter_name }}
           </td>
           <td>
             {{ $country->votes }}
+          </td>
+          <td>
+            {{ $country->votable ? 'true' : 'false' }}
           </td>
           <td>
             {{ $country->voting_complete ? 'true' : 'false' }}
