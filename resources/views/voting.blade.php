@@ -85,7 +85,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button id="submit-scores"  type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
             </div>
         </div>
     </div>
@@ -123,6 +123,10 @@ $("ul.countries").sortable({
       $("span#data-saving").hide();
     });
   }
+});
+
+$("#submit-scores").click(function() {
+  alert('cocks')
 });
 
 </script>
