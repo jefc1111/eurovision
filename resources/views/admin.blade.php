@@ -15,6 +15,8 @@
       <thead>
         <th>Name</th>
         <th>Secret code</th>
+        <th>Song name</th>
+        <th>Sequence number</th>
         <th>Flag</th>
         <th>Voter name</th>
         <th>Vote data</th>
@@ -28,6 +30,12 @@
           </td>
           <td>
             {{ $country->code }}
+          </td>
+          <td>
+            {{ $country->song_name }}
+          </td>
+          <td>
+            {{ $country->song_seq }}
           </td>
           <td>
             <img src="{{ $country->getFlagUrl() }}">

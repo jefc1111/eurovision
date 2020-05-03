@@ -5,35 +5,39 @@
 @section('body')
 <body class="bg-cloud">
   <div class="container">
-  <span>
-      <h1>Welcome, {{ $votingCountry->voter_name }}, representative of {{ $votingCountry->name }}
+    <span>
+      <h2>Welcome, {{ $votingCountry->voter_name }}, representative of {{ $votingCountry->name }}
         <img class="float-right" src="{{ $votingCountry->getFlagUrl() }}">
-
-      </h1>
+      </h2>
     </span>
-
-
     <div class="row">
       <div class="col-sm">
-              <ul class="list-unstyled scores float-right">
-      @foreach($scores as $score)
-      <li class="">
-        {{ $score }}
-
-      </li>
-      @endforeach
-    </ul>
+        <ul class="list-unstyled scores float-right">
+          @foreach($scores as $score)
+          <li class="font-weight-bold">
+            <h1>
+              {{ $score }}
+            </h1>
+          </li>
+          @endforeach
+        </ul>
       </div>
-      <div class="col-sm">
+    <div class="col-sm">
       <ul class="list-unstyled countries float-left">
-      @foreach($countries->sortBy('name') as $country)
-      <li id="country-{{ $country->id }}" data-id="{{ $country->id }}" class="">
-        {{ $country->name }}
-        <img class="float-right" src="{{ $country->getFlagUrl() }}">
-      </li>
-      @endforeach
-    </ul>
-      </div>
+        @foreach($countries->sortBy('name') as $country)
+        <li id="country-{{ $country->id }}" data-id="{{ $country->id }}">
+          <span class="font-weight-bold">
+            {{ $country->name }}
+            <img class="float-right" src="{{ $country->getFlagUrl() }}">
+          </span>
+          <br />
+          <span class="country-details">
+            "{{ $country->song_name }}" (Song {{ $country->song_seq }})
+          </span>
+        </li>
+        @endforeach
+      </ul>
+    </div>
       <div class="col-sm">
 
       </div>
@@ -63,6 +67,7 @@
 <script>
 
 $("ul").sortable({
+  cursor: "grabbing",
   stop: function(e, ui) {
       const positionData = $('ul.countries li').toArray().map((item) => $(item).data("id"));
 
@@ -100,7 +105,7 @@ $("ul").sortable({
 
 li {
   padding: 0;
-  height: 40px;
+  height: 60px;
   border: 1px solid black;
   padding: 5px;
   background: rgba(255,255,255,0.7);
@@ -108,6 +113,10 @@ li {
 
 ul.countries li {
   width: 400px;
+}
+
+ul.countries li:hover {
+  cursor: grab;
 }
 
 ul.scores li {
@@ -128,13 +137,17 @@ span#data-saving, span#data-error {
 
 .spin {  
   animation-name: spin;
-  animation-duration: 1500ms;
+  animation-duration: 300ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear; 
   /* transform: rotate(3deg); */
    /* transform: rotate(0.3rad);/ */
    /* transform: rotate(3grad); */ 
    /* transform: rotate(.03turn);  */
+}
+
+.country-details {
+  font-size: 0.85rem;
 }
 
 @keyframes spin {

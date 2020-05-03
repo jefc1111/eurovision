@@ -30,9 +30,16 @@ class VotingController extends Controller
 
     public function savePositionData($voterId)
     {
-        \Log::warning($voterId);
-        \Log::warning(request());
+      \Log::warning($voterId);
+      \Log::warning(request()->has('positionData'));
+      \Log::warning(request()->get('positionData'));
+      
+        $votingCountry = Country::findOrFail($voterId);
 
-        abort(404);
+        $votingCountry->votes = json_encode(request()->get('positionData'));
+
+        $votingCountry->save();
+
+        return true;
     }
 }
