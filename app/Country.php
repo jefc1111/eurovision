@@ -33,7 +33,7 @@ class Country extends Model
 
               $res->push($country);
           }           
-          \Log::warning($ids);
+
           $res = $res->sortBy('sort_pos');
         }
 

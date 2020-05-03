@@ -11,16 +11,17 @@
       </h2>
     </span>
     @if($votingCountry->voting_complete)
-    <h2>We have received your final scores.</h2>
+    <h2>
+      We have received your final scores.
+      <img src="assets/icons/check-0.png">
+    </h2>
     @endif
     <div class="row">
       <div class="col-sm">
         <ul class="list-unstyled scores float-right">
           @foreach($scores as $score)
           <li class="font-weight-bold">
-            <h1>
               {{ $score }}
-            </h1>
           </li>
           @endforeach
         </ul>
@@ -33,7 +34,6 @@
             {{ $country->name }}
             <img class="float-right" src="{{ $country->getFlagUrl() }}">
           </span>
-          <br />
           <span class="country-details">
             "{{ $country->song_name }}" (Song {{ $country->song_seq }})
           </span>
@@ -46,14 +46,14 @@
       </div>
     </div>
     @if(! $votingCountry->voting_complete)
-    <button type="submit" class="btn btn-primary">Submit scores</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmation-modal">
+        Submit final scores
+    </button>
     @endif
     <img class="float-right spinner" src="assets/icons/network_internet_pcs_installer-2.png">
     <span id="data-saving" class="float-right">Saving...</span>
     <span id="data-saved" class="float-right">All data saved</span>
     <span id="data-error" class="float-right">Error saving data - please contact Paul</span>
-    
-
   </div>
   <footer class="taskbar">
       <div class="row" style="margin-right: 0px;">
@@ -67,39 +67,61 @@
 
   </footer>
 </body>
+
+<!-- Modal -->
+<div class="modal" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <p><img src="assets/icons/floppy_drive_5_25-3.png" class="icon-32"></p>
+              <p>Are you sure you want to submit your scores?</p>                
+              <p>This cannot be undone.</p>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @if(! $votingCountry->voting_complete)
 <script>
 
-$("ul").sortable({
+$("ul.countries").sortable({
   cursor: "grabbing",
   stop: function(e, ui) {
-      const positionData = $('ul.countries li').toArray().map((item) => $(item).data("id"));
+    const positionData = $('ul.countries li').toArray().map((item) => $(item).data("id"));
 
-      $(".spinner").addClass("spin");
+    $(".spinner").addClass("spin");
 
-      $("span#data-saved").hide();
+    $("span#data-saved").hide();
 
-      $("span#data-saving").show();
+    $("span#data-saving").show();
 
-      $.post("/save-position-data/{{ $votingCountry->id }}", {
-        positionData
-      }).done(function(rdata) {
+    $.post("/save-position-data/{{ $votingCountry->id }}", {
+      positionData
+    }).done(function(rdata) {
+      $(".spinner").removeClass("spin");
 
+      $("span#data-saved").show();    
 
-        $(".spinner").removeClass("spin");
+      $("span#data-saving").hide();
+    }).fail(function(xhr, status, error) {
+      console.log(error);
 
-        $("span#data-saved").show();    
+      $(".spinner").removeClass("spin");
 
-        $("span#data-saving").hide();
-      }).fail(function(xhr, status, error) {
-        console.log(error);
+      $("span#data-error").show();    
 
-        $(".spinner").removeClass("spin");
-
-        $("span#data-error").show();    
-
-        $("span#data-saving").hide();
-      });
+      $("span#data-saving").hide();
+    });
   }
 });
 
@@ -109,26 +131,28 @@ $("ul").sortable({
 
 li {
   padding: 0;
-  height: 60px;
+  height: 32px;
   border: 1px solid black;
-  padding: 5px;
+  padding: 2px;
   background: rgba(255,255,255,0.7);
 }
 
 ul.countries li {
-  width: 400px;
+  width: 500px;
 }
 
 ul.countries li:hover {
+  @if(! $votingCountry->voting_complete)
   cursor: grab;
+  @endif
 }
 
 ul.scores li {
-  width: 60px;
+  width: 40px;
 }
 
 li img {
-  height: 32;
+  height: 28;
 }
 
 div.col-sm {

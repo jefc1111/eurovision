@@ -19,12 +19,12 @@ class VotingController extends Controller
             return redirect(url('login'))->with('error', 'The code is not valid');
         }
 
-        $countries = $votingCountry->hasVotes() ? $votingCountry->getVotedCountries() : Country::where('votable', '=', 1)->get();
+        $countries = $votingCountry->hasVotes() ? $votingCountry->getVotedCountries() : Country::where('votable', '=', 1)->get()->shuffle();
 
         return view('voting')->with([
             'countries' => $countries->except([$votingCountry->id]),
             'votingCountry' => $votingCountry,
-            'scores' => [12, 10, 8]
+            'scores' => [12, 10, 8, 7, 6, 5, 4, 3, 2, 1]
         ]);
     }
 
