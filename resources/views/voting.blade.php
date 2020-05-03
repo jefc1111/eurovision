@@ -72,16 +72,22 @@ $("ul").sortable({
 
       $("span#data-saving").show();
 
-      $.post("/save-data", {
+      $.post("/save-position-data/{{ $votingCountry->id }}", {
         positionData
-      }, function(rdata) {
-        if (error) {
+      }).done(function(rdata) {
 
-        }
-        
+
         $(".spinner").removeClass("spin");
 
         $("span#data-saved").show();    
+
+        $("span#data-saving").hide();
+      }).fail(function(xhr, status, error) {
+        console.log(error);
+
+        $(".spinner").removeClass("spin");
+
+        $("span#data-error").show();    
 
         $("span#data-saving").hide();
       });

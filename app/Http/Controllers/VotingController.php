@@ -28,4 +28,11 @@ class VotingController extends Controller
         ]);
     }
 
+    public function savePositionData($voterId)
+    {
+        \Log::warning($voterId);
+        \Log::warning(request());
+
+        abort(404);
+    }
 }
