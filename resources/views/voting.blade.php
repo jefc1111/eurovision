@@ -138,7 +138,7 @@ $("#submit-scores").click(function() {
 li {
   padding: 0;
   height: 32px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   padding: 2px;
   background: rgba(255,255,255,0.7);
 }
