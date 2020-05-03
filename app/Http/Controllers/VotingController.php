@@ -20,9 +20,9 @@ class VotingController extends Controller
         }
 
         $countries = $votingCountry->hasVotes() ? $votingCountry->getVotedCountries() : Country::where('votable', '=', 1)->get()->shuffle();
-
+        
         return view('voting')->with([
-            'countries' => $countries->except([$votingCountry->id]),
+            'countries' => $countries->filter(function($c) use ($votingCountry) { return $c->id != $votingCountry->id;}),
             'votingCountry' => $votingCountry,
             'scores' => [12, 10, 8, 7, 6, 5, 4, 3, 2, 1]
         ]);
@@ -33,6 +33,17 @@ class VotingController extends Controller
         $votingCountry = Country::findOrFail($voterId);
 
         $votingCountry->votes = json_encode(request()->get('positionData'));
+
+        $votingCountry->save();
+
+        return true;
+    }
+
+    public function submitScores($voterId)
+    {
+        $votingCountry = Country::findOrFail($voterId);
+
+        $votingCountry->voting_complete = 1;
 
         $votingCountry->save();
 

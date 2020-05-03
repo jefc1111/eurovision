@@ -26,14 +26,14 @@ class Country extends Model
         if ($this->hasVotes()) {
           $ids = json_decode($this->votes);
           
-          for ($i = 0; $i < count($ids); $i++) {
+          for ($i = 0; $i < count($ids); $i++) {              
               $country = Country::find($ids[$i]);
 
               $country->sortPos = $i;
 
               $res->push($country);
           }           
-
+          
           $res = $res->sortBy('sort_pos');
         }
 

@@ -126,7 +126,9 @@ $("ul.countries").sortable({
 });
 
 $("#submit-scores").click(function() {
-  alert('cocks')
+  $.get("/submit-scores/{{ $votingCountry->id }}", function() {
+    location.reload();
+  });
 });
 
 </script>
