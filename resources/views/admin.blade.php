@@ -66,7 +66,17 @@
         </tbody>        
       </table>
       <a class="btn btn-light btn-xs" href="/remove-highlight">Remove highlights</a>
+      <br />
+      <br />
+      <a class="btn btn-light btn-xs" href="/export">Export CSV</a>
   </div>
+  <footer class="taskbar">
+      <div class="row" style="margin-right: 0px;">
+          <div class="col-8">
+              <a href="/reset-vote-data" class="btn start-button">Reset voting date (cannot be undone!)</a>
+          </div>
+      </div>
+  </footer>
 </body>
 
 <style>

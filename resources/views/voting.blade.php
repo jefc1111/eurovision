@@ -64,7 +64,6 @@
               <a href="#" class="btn start-button"><img src="assets/icons/usb-1.png" class="icon-16"></a>
           </div>
       </div>
-
   </footer>
 </body>
 

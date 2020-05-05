@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+  return redirect('login');
+});
+
 Route::get('/login', function () {
     return view('login');
 });
@@ -33,4 +37,8 @@ Route::get('highlight/{id}', 'AdminController@highlight');
 
 Route::get('remove-highlight', 'AdminController@removeHighlight');
 
+Route::get('reset-vote-data', 'AdminController@resetVoteData');
+
 Route::get('the-secret-admin-page', 'AdminController@index');
+
+Route::get('export', 'AdminController@export');
