@@ -131,6 +131,22 @@ $("#submit-scores").click(function() {
   });
 });
 
+function doPoll() {
+    $.post('/vote-page-poll', function(data) {
+        const highlightedCountries = data.filter(c => c.highlight);
+
+        $("ul.countries li").removeClass("bg-success");
+
+        highlightedCountries.forEach(c => {
+          $("ul.countries li[data-id=" + c.id + "]").addClass("bg-success");
+        });
+
+        setTimeout(doPoll,5000);
+    });
+}
+
+doPoll();
+
 </script>
 @endif
 <style>

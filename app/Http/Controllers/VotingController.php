@@ -39,6 +39,11 @@ class VotingController extends Controller
         return true;
     }
 
+    public function poll()
+    {
+        return Country::all();
+    }
+
     public function submitScores($voterId)
     {
         $votingCountry = Country::findOrFail($voterId);

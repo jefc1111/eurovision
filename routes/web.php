@@ -23,6 +23,8 @@ Route::get('/voting', function () {
 
 Route::post('voting', 'VotingController@index');
 
+Route::post('vote-page-poll', 'VotingController@poll');
+
 Route::post('save-position-data/{voterId}', 'VotingController@savePositionData');
 
 Route::get('submit-scores/{voterId}', 'VotingController@submitScores');
