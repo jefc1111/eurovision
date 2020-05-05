@@ -27,4 +27,8 @@ Route::post('save-position-data/{voterId}', 'VotingController@savePositionData')
 
 Route::get('submit-scores/{voterId}', 'VotingController@submitScores');
 
+Route::get('highlight/{id}', 'AdminController@highlight');
+
+Route::get('remove-highlight', 'AdminController@removeHighlight');
+
 Route::get('the-secret-admin-page', 'AdminController@index');

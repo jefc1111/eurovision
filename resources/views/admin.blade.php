@@ -10,8 +10,8 @@
 
 @section('body')
 <body class="bg-cloud">
-  <div class="container">
-    <table class="table table-bordered">
+  <div class="container-fluid">
+    <table class="table table-bordered table-sm table-dark">
       <thead>
         <th>Id</th>
         <th>Flag</th>
@@ -23,15 +23,16 @@
         <th>Vote data</th>
         <th>Can be voted for</th>
         <th>Voting complete</th>
+        <th></th>
       </thead>
       <tbody>
         @foreach($countries->sortBy('name') as $country)
-        <tr>
+        <tr class="{{ $country->highlight ? 'bg-success' : null }}">
           <td>
             {{ $country->id }}
           </td>
           <td>
-            <img src="{{ $country->getFlagUrl() }}">
+            <img height="32" src="{{ $country->getFlagUrl() }}">
           </td>
           <td>
             {{ $country->name }}
@@ -52,26 +53,24 @@
             {{ $country->votes }}
           </td>
           <td>
-            {{ $country->votable ? 'true' : 'false' }}
+            {{ $country->votable ? 'true' : '' }}
           </td>
           <td>
-            {{ $country->voting_complete ? 'true' : 'false' }}
+            {{ $country->voting_complete ? 'true' : '' }}
+          </td>
+          <td>
+            <a class="btn btn-light btn-xs" href="/highlight/{{ $country->id }}">highlight</a>
           </td>
         </tr>
         @endforeach
-        </tbody>
+        </tbody>        
       </table>
+      <a class="btn btn-light btn-xs" href="/remove-highlight">Remove highlights</a>
   </div>
 </body>
 
 <style>
-table {
-  background: #323232;  
-}
 
-table th, table td {
-  color: #efefef;
-} 
 </style>
 
 @endsection
