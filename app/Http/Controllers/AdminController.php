@@ -59,6 +59,7 @@ class AdminController extends Controller
             'Player',
             'SongNum',
             'Reveal Order',
+            'Voting Complete'
         ];
 
         for ($i = 1; $i <= $countries->where('votable', '=', 1)->count(); $i++) {
@@ -66,7 +67,7 @@ class AdminController extends Controller
         }
 
         $callback = function () use ($countries, $columns) {
-            function fputcsv_eol($handle, $array, $delimiter = ',', $enclosure = '"', $eol = "\r\n")
+            function fputcsv_eol($handle, $array, $delimiter = ',', $enclosure = '"', $eol = "\n")
             {
                 $return = fputcsv($handle, $array, $delimiter, $enclosure);
                 if ($return !== false && "\n" != $eol && 0 === fseek($handle, -1, SEEK_CUR)) {
@@ -89,6 +90,7 @@ class AdminController extends Controller
                     $country->voter_name,
                     $country->song_seq,
                     '',
+                    $country->voting_complete
                 ];
 
                 foreach ($country->pointsToCountries($countries->where('votable', '=', 1)) as $pointsToCountry) {
