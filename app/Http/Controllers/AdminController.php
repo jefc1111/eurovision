@@ -66,8 +66,17 @@ class AdminController extends Controller
         }
 
         $callback = function () use ($countries, $columns) {
+            function fputcsv_eol($handle, $array, $delimiter = ',', $enclosure = '"', $eol = "\n")
+            {
+                $return = fputcsv($handle, $array, $delimiter, $enclosure);
+                if ($return !== false && "\n" != $eol && 0 === fseek($handle, -1, SEEK_CUR)) {
+                    fwrite($handle, $eol);
+                }
+                return $return;
+            }
+
             $file = fopen('php://output', 'w');
-            
+
             fputcsv($file, $columns);
 
             $i = 1;
@@ -86,10 +95,10 @@ class AdminController extends Controller
                     $row[] = $pointsToCountry;
                 }
 
-                fputcsv($file, $row);
+                fputcsv_eol($file, $row);
 
                 $i++;
-            }            
+            }
 
             fclose($file);
         };
