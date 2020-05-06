@@ -66,7 +66,7 @@ class AdminController extends Controller
         }
 
         $callback = function () use ($countries, $columns) {
-            function fputcsv_eol($handle, $array, $delimiter = ',', $enclosure = '"', $eol = "\n")
+            function fputcsv_eol($handle, $array, $delimiter = ',', $enclosure = '"', $eol = "\r\n")
             {
                 $return = fputcsv($handle, $array, $delimiter, $enclosure);
                 if ($return !== false && "\n" != $eol && 0 === fseek($handle, -1, SEEK_CUR)) {
