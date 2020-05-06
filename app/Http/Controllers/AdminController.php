@@ -76,7 +76,7 @@ class AdminController extends Controller
             return $return;
         }
 
-        $filname = 'eurovision-2020-export-'.time().'.csv';
+        $filename = 'eurovision-2020-export-'.time().'.csv';
 
         $filepath = 'public/'.$filename;
 
@@ -108,6 +108,6 @@ class AdminController extends Controller
 
         fclose($file);
 
-        return Storage::download($filepath, $filname);
+        return Storage::download($filepath, $filename);
     }
 }
