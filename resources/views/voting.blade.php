@@ -5,19 +5,21 @@
 @section('body')
 <body class="bg-cloud">
   <div class="container">
-    <span>
-      <h2>Welcome, {{ $votingCountry->voter_name }}, representative of {{ $votingCountry->name }}
-        <img class="float-right" src="{{ $votingCountry->getFlagUrl() }}">
-      </h2>
-    </span>
-    @if($votingCountry->voting_complete)
-    <h2>
-      We have received your final scores.
-      <img src="assets/icons/check-0.png">
-    </h2>
-    @endif
     <div class="row">
-      <div class="col-sm">
+      <span>
+        <h3>Welcome, {{ $votingCountry->voter_name }}, representative of {{ $votingCountry->name }}
+          <img class="float-right" src="{{ $votingCountry->getFlagUrl() }}">
+        </h3>
+      </span>
+      @if($votingCountry->voting_complete)
+      <h3>
+        We have received your final scores.
+        <img src="assets/icons/check-0.png">
+      </h3>
+      @endif
+    </div>
+    <div class="row">
+      <div class="col-xs">
         <ul class="list-unstyled scores float-right">
           @foreach($scores as $score)
           <li class="font-weight-bold">
@@ -26,7 +28,7 @@
           @endforeach
         </ul>
       </div>
-    <div class="col-sm">
+    <div class="col-xs">
       <ul class="list-unstyled countries float-left">
         @foreach($countries as $country)
         <li id="country-{{ $country->id }}" data-id="{{ $country->id }}">
@@ -159,7 +161,8 @@ li {
 }
 
 ul.countries li {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
 }
 
 ul.countries li:hover {

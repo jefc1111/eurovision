@@ -72,8 +72,11 @@
   </div>
   <footer class="taskbar">
       <div class="row" style="margin-right: 0px;">
-          <div class="col-8">
-              <a href="/reset-vote-data" class="btn start-button">Reset voting date (cannot be undone!)</a>
+          <div class="col-3">
+              <a href="/reset-vote-data-confirmation-page" class="btn start-button">Reset voting date</a>
+          </div>
+          <div class="col-3">
+              <a href="/login" class="">Login page</a>
           </div>
       </div>
   </footer>

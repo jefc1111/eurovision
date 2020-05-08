@@ -39,6 +39,10 @@ Route::get('remove-highlight', 'AdminController@removeHighlight');
 
 Route::get('reset-vote-data', 'AdminController@resetVoteData');
 
+Route::get('reset-vote-data-confirmation-page', function () {
+  return view('reset-vote-data-confirmation-page');
+});
+
 Route::get('the-secret-admin-page', 'AdminController@index');
 
 Route::get('export', 'AdminController@export');
