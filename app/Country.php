@@ -56,7 +56,7 @@ class Country extends Model
 
         foreach ($votableCountries->sortBy('song_seq') as $votableCountry) {
             $res[] = in_array($votableCountry->id, $voted_ids) 
-              ? $points[array_search($votableCountry->id, $voted_ids)] 
+              ? array_key_exists(array_search($votableCountry->id, $voted_ids), $points) ? $points[array_search($votableCountry->id, $voted_ids)] : 0 
               : 0;
         }
 

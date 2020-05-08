@@ -10,9 +10,22 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $countries = \App\Country::all();
+        $countries = Country::all();
 
         return view('admin')->with('countries', $countries);
+    }
+
+    public function generateCodes()
+    {
+        $countries = Country::all();
+
+        $countries->each(function($c) {
+            $c->code = \Str::random(4);
+
+            $c->save();
+        });
+        
+        return redirect('the-secret-admin-page');
     }
 
     public function highlight($id)

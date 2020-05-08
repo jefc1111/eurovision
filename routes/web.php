@@ -46,3 +46,5 @@ Route::get('reset-vote-data-confirmation-page', function () {
 Route::get('the-secret-admin-page', 'AdminController@index');
 
 Route::get('export', 'AdminController@export');
+
+Route::get('generate-codes', 'AdminController@generateCodes');
