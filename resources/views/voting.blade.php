@@ -48,7 +48,7 @@
       </div>
     </div>
     @if(! $votingCountry->voting_complete)
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmation-modal">
+    <button disabled id="trigger-confirmation-modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmation-modal">
         Submit final scores
     </button>
     @endif
@@ -74,7 +74,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Final score submission</h5>
                 <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -92,13 +92,15 @@
     </div>
 </div>
 
-@if(! $votingCountry->voting_complete)
-<script>
 
+<script>
+@if(! $votingCountry->voting_complete)
 $("ul.countries").sortable({
   cursor: "grabbing",
   stop: function(e, ui) {
     const positionData = $('ul.countries li').toArray().map((item) => $(item).data("id"));
+
+    $("#trigger-confirmation-modal").prop("disabled", true);
 
     $(".spinner").addClass("spin");
 
@@ -111,11 +113,15 @@ $("ul.countries").sortable({
     }).done(function(rdata) {
       $(".spinner").removeClass("spin");
 
+      $("#trigger-confirmation-modal").prop("disabled", false);
+
       $("span#data-saved").show();    
 
       $("span#data-saving").hide();
     }).fail(function(xhr, status, error) {
       console.log(error);
+
+      $("#trigger-confirmation-modal").prop("disabled", false);
 
       $(".spinner").removeClass("spin");
 
@@ -131,6 +137,7 @@ $("#submit-scores").click(function() {
     location.reload();
   });
 });
+@endif
 
 function doPoll() {
     $.post('/vote-page-poll', function(data) {
@@ -149,8 +156,13 @@ function doPoll() {
 doPoll();
 
 </script>
-@endif
+
 <style>
+@if($votingCountry->voting_complete)
+ul li:nth-child(-n+3) {
+  background: yellow;
+}
+@endif
 
 li {
   padding: 0;
