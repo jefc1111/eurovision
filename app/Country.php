@@ -34,7 +34,7 @@ class Country extends Model
                 $res->push($country);
             }
 
-            $res = $res->sortBy('sort_pos');
+            $res = $res->sortBy('sortPos');
         }
 
         return $res;
