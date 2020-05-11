@@ -14,7 +14,7 @@
       @if($votingCountry->voting_complete)
       <h3>
         We have received your final scores.
-        <img src="assets/icons/check-0.png">
+        <img src="{{ asset('assets/icons/check-0.png') }}">
       </h3>
       @endif
     </div>
@@ -52,7 +52,7 @@
         Submit final scores
     </button>
     @endif
-    <img class="float-right spinner" src="assets/icons/network_internet_pcs_installer-2.png">
+    <img src="{{ asset('assets/icons/network_internet_pcs_installer-2.png') }}" class="float-right spinner">
     <span id="data-saving" class="float-right">Saving...</span>
     <span id="data-saved" class="float-right">All data saved</span>
     <span id="data-error" class="float-right">Error saving data - please contact Paul</span>
@@ -60,10 +60,10 @@
   <footer class="taskbar">
       <div class="row" style="margin-right: 0px;">
           <div class="col-8">
-              <a href="#" class="btn start-button"><img src="assets/icons/windows_title-1.png" class="icon-16">Start</a>
+              <a href="#" class="btn start-button"><img src="{{ asset('assets/icons/windows_title-1.png') }}" class="icon-16">Start</a>
           </div>
           <div class="col-4 time">
-              <a href="#" class="btn start-button"><img src="assets/icons/usb-1.png" class="icon-16"></a>
+              <a href="#" class="btn start-button"><img src="{{ asset('assets/icons/usb-1.png') }}" class="icon-16"></a>
           </div>
       </div>
   </footer>
@@ -80,13 +80,13 @@
                 </button>
             </div>
             <div class="modal-body">
-              <p><img src="assets/icons/floppy_drive_5_25-3.png" class="icon-32"></p>
+              <p><img src="{{ asset('assets/icons/floppy_drive_5_25-3.png') }}" class="icon-32"></p>
               <p>Are you sure you want to submit your scores?</p>                
               <p>This cannot be undone.</p>                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                <button id="submit-scores"  type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                <a href="/submit-scores/{{ $votingCountry->id }}" id="submit-scores" class="btn btn-primary">Submit</a>
             </div>
         </div>
     </div>
@@ -132,11 +132,6 @@ $("ul.countries").sortable({
   }
 });
 
-$("#submit-scores").click(function() {
-  $.get("/submit-scores/{{ $votingCountry->id }}", function() {
-    location.reload();
-  });
-});
 @endif
 
 function doPoll() {

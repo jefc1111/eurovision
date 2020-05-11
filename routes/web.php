@@ -27,6 +27,8 @@ Route::get('/voting', function () {
 
 Route::post('voting', 'VotingController@index');
 
+Route::get('voting/{secretCode}', 'VotingController@votingPage');
+
 Route::post('vote-page-poll', 'VotingController@poll');
 
 Route::post('save-position-data/{voterId}', 'VotingController@savePositionData');

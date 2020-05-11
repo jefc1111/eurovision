@@ -14,13 +14,13 @@
                   <form action="{{ url('voting') }}" method="post">
                       <div class="form-group row">
                           <label for="inputPassword3" class="col-md-3 col-sm-4 col-form-label">
-                              <img src="assets/icons/keys-0.png" class="icon-16-4"> Secret access code
+                              <img src="{{ asset('assets/icons/keys-0.png') }}" class="icon-16-4"> Secret access code
                           </label>
                           <div class="col-sm-8 col-md-9">
                               <input name="secret_code" type="text" class="form-95 is-invalid" id="inputPassword3">
                               <div class="invalid-feedback">
                                   @if(session('error'))
-                                      <img src="assets/icons/msg_warning-2.png" class="icon-16-4">
+                                      <img src="{{ asset('assets/icons/msg_warning-2.png') }}" class="icon-16-4">
                                       {{ session('error') }}
                                   @endif
                               </div>                      

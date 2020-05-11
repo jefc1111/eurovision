@@ -17,10 +17,14 @@ class AdminController extends Controller
 
     public function generateCodes()
     {
+        if (env('DB_LOCKED', true)) {
+            abort('403', 'Temporarily disabled');
+        }        
+
         $countries = Country::all();
 
         $countries->each(function($c) {
-            $c->code = \Str::random(4);
+            $c->code = rand(100000, 999999);
 
             $c->save();
         });
@@ -46,6 +50,10 @@ class AdminController extends Controller
 
     public function resetVoteData()
     {
+        if (env('DB_LOCKED', true)) {
+            abort('403', 'Temporarily disabled');
+        }        
+        
         Country::query()->update([
             'voting_complete' => false,
             'votes' => null,

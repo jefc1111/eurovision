@@ -19,12 +19,25 @@ class VotingController extends Controller
             return redirect(url('login'))->with('error', 'The code is not valid');
         }
 
+        return redirect('voting/'.$votingCountry->code);
+    }
+
+    public function votingPage($secretCode)
+    {
+        $votingCountry = Country::where('code', '=', $secretCode)->first();
+
         $countries = $votingCountry->hasVotes() ? $votingCountry->getVotedCountries() : Country::where('votable', '=', 1)->get()->shuffle();
         
+        $scores = [12, 10, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        if (! $votingCountry->votable) {
+          $scores[] = 0;
+        }
+
         return view('voting')->with([
             'countries' => $countries->filter(function($c) use ($votingCountry) { return $c->id != $votingCountry->id;}),
             'votingCountry' => $votingCountry,
-            'scores' => [12, 10, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            'scores' => $scores
         ]);
     }
 
@@ -52,6 +65,6 @@ class VotingController extends Controller
 
         $votingCountry->save();
 
-        return true;
+        return redirect('voting/'.$votingCountry->code);
     }
 }
