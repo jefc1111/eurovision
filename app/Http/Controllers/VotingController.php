@@ -37,7 +37,8 @@ class VotingController extends Controller
         return view('voting')->with([
             'countries' => $countries->filter(function($c) use ($votingCountry) { return $c->id != $votingCountry->id;}),
             'votingCountry' => $votingCountry,
-            'scores' => $scores
+            'scores' => $scores,
+            'votingAllowed' => env('VOTING_ALLOWED', true) 
         ]);
     }
 

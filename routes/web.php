@@ -45,7 +45,7 @@ Route::get('reset-vote-data-confirmation-page', function () {
   return view('reset-vote-data-confirmation-page');
 });
 
-Route::get('the-secret-admin-page', 'AdminController@index');
+Route::get('the-secret-admin-page/{sortBy?}/{votableOnly?}', 'AdminController@index');
 
 Route::get('export', 'AdminController@export');
 

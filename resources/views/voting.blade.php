@@ -17,6 +17,12 @@
         <img src="{{ asset('assets/icons/check-0.png') }}">
       </h3>
       @endif
+      @if(! $votingAllowed)
+      <h4>
+        Thank you for logging in! Voting is not open yet. Please refresh the page when asked. 
+        <img src="{{ asset('assets/icons/no-1.png') }}">
+      </h4>
+      @endif
     </div>
     <div class="row">
       <div class="col-xs">
@@ -94,7 +100,7 @@
 
 
 <script>
-@if(! $votingCountry->voting_complete)
+@if(! $votingCountry->voting_complete & $votingAllowed)
 $("ul.countries").sortable({
   cursor: "grabbing",
   stop: function(e, ui) {

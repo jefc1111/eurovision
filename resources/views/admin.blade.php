@@ -26,7 +26,7 @@
         <th></th>
       </thead>
       <tbody>
-        @foreach($countries->sortBy('name') as $country)
+        @foreach($countries as $country)
         <tr class="{{ $country->highlight ? 'bg-success' : null }}">
           <td>
             {{ $country->id }}
@@ -56,10 +56,12 @@
             {{ $country->votable ? 'true' : '' }}
           </td>
           <td>
-            {{ $country->voting_complete ? 'true' : '' }}
+            {{ $country->voting_complete ? 'true' : '' }}            
           </td>
           <td>
+            @if($country->votable)
             <a class="btn btn-light btn-xs" href="/highlight/{{ $country->id }}">highlight</a>
+            @endif
           </td>
         </tr>
         @endforeach

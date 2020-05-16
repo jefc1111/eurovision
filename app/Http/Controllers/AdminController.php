@@ -8,11 +8,15 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index($sortBy = 'name', $votableOnly = false)
     {
         $countries = Country::all();
 
-        return view('admin')->with('countries', $countries);
+        if ($votableOnly) {
+            $countries = $countries->where('votable', true);
+        }
+
+        return view('admin')->with('countries', $countries->sortBy($sortBy));
     }
 
     public function generateCodes()
