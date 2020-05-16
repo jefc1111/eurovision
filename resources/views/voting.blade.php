@@ -24,6 +24,7 @@
       </h4>
       @endif
     </div>
+    @if($votingAllowed)
     <div class="row">
       <div class="col-xs">
         <ul class="list-unstyled scores float-right">
@@ -49,6 +50,7 @@
         @endforeach
       </ul>
     </div>
+    @endif
       <div class="col-sm">
 
       </div>
