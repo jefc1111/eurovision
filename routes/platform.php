@@ -18,6 +18,13 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
+use App\Orchid\Screens\CountryListScreen;
+use App\Orchid\Screens\CountryEditScreen;
+
+Route::screen('countries', CountryListScreen::class)->name('platform.country.list');
+
+Route::screen('country/{country?}', CountryEditScreen::class)->name('platform.country.edit');
+
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes

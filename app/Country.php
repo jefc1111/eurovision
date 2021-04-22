@@ -3,10 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
 class Country extends Model
 {
+    use AsSource;
+
     protected $table = 'countries';
+    
+    protected $guarded = ['id'];
+    
     public $timestamps = false;
 
     public function getFlagUrl()
