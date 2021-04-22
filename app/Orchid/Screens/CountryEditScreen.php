@@ -21,14 +21,14 @@ class CountryEditScreen extends Screen
      *
      * @var string
      */
-    public $name = 'CountryEditScreen';
+    public $name = 'Create country';
 
     /**
      * Display header description.
      *
      * @var string|null
      */
-    public $description = 'CountryEditScreen';
+    public $description = 'Creat new country';
 
      /**
      * @var bool
@@ -64,7 +64,7 @@ class CountryEditScreen extends Screen
     {
         return [
             Button::make('Create country')
-                ->icon('pencil')
+                ->icon('control-play')
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),
 
@@ -90,15 +90,18 @@ class CountryEditScreen extends Screen
         return [
             Layout::rows([
                 Input::make('country.name')
-                    ->title('Name')
+                    ->title('Country name')
                     ->placeholder('Country name')
                     ->help('Like, Poland, or whatever.'),
-
-                TextArea::make('country.song_name')
+                Input::make('country.song_name')
                     ->title('Song name')
-                    ->rows(3)
-                    ->maxlength(200)
                     ->placeholder('Song name'),
+                Input::make('country.code')
+                    ->title('Entry code')
+                    ->placeholder('Entry code'),
+                Input::make('country.flag')
+                    ->title('Flag')
+                    ->placeholder('Link for flag'),
                 /*
                 Relation::make('post.author')
                     ->title('Author')

@@ -14,14 +14,14 @@ class CountryListScreen extends Screen
      *
      * @var string
      */
-    public $name = 'CountryListScreen';
+    public $name = 'Country admin';
 
     /**
      * Display header description.
      *
      * @var string|null
      */
-    public $description = 'CountryListScreen';
+    public $description = 'All the data is here!';
 
     /**
      * Query data.

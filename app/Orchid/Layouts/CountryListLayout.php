@@ -27,11 +27,20 @@ class CountryListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::make('name', 'Name')
+            TD::make('name', 'Country name')
                 ->render(function (Country $country) {
                     return Link::make($country->name)
                         ->route('platform.country.edit', $country);
                 }),
+            TD::make('code', 'Code'),
+            TD::make('votable', 'Can be voted for'),
+            TD::make('voter_name', 'Voter name'),
+            TD::make('name', 'Name'),
+            TD::make('flag', 'Flag'),
+            TD::make('song_name', 'Song name'),
+            TD::make('song_seq', 'Song sequence'),
+            TD::make('votes', 'Votes'),
+            TD::make('voting_complete', 'Voting complete'),
         ];
     }
 }
