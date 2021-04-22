@@ -31,16 +31,16 @@ class CountryListLayout extends Table
                 ->render(function (Country $country) {
                     return Link::make($country->name)
                         ->route('platform.country.edit', $country);
-                }),
+                })->sort(),
             TD::make('code', 'Code'),
             TD::make('votable', 'Can be voted for'),
             TD::make('voter_name', 'Voter name'),
             TD::make('name', 'Name'),
             TD::make('flag', 'Flag'),
             TD::make('song_name', 'Song name'),
-            TD::make('song_seq', 'Song sequence'),
+            TD::make('song_seq', 'Song sequence')->sort(),
             TD::make('votes', 'Votes'),
-            TD::make('voting_complete', 'Voting complete'),
+            TD::make('voting_complete', 'Voting complete')->sort(),
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
+use Orchid\Filters\Filterable;
 
 class Country extends Model
 {
@@ -12,8 +13,19 @@ class Country extends Model
     protected $table = 'countries';
     
     protected $guarded = ['id'];
-    
+
     public $timestamps = false;
+
+    /**
+     * Name of columns to which http sorting can be applied
+     *
+     * @var array
+     */
+    protected $allowedSorts = [
+        'name',
+        'song_seq',
+        'voting_complete'
+    ];
 
     public function getFlagUrl()
     {
