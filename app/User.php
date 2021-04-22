@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Orchid\Platform\Models\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -33,7 +33,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    /* This overrides that in the parents class so watch out!
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    */
 }
