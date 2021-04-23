@@ -32,7 +32,7 @@ class CountryListScreen extends Screen
     {
         return [
             'country'  => Country::find(1),
-            'countries' => Country::orderBy('name')->paginate(),
+            'countries' => Country::paginate(),
         ];
     }
 

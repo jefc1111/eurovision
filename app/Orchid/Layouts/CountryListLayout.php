@@ -27,16 +27,15 @@ class CountryListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::make('name', 'Country name')
-                ->render(function (Country $country) {
-                    return Link::make($country->name)
-                        ->route('platform.country.edit', $country);
-                })->sort(),
+            TD::make('name', 'Country name')->render(function (Country $country) {
+                return Link::make($country->name)->route('platform.country.edit', $country);
+            })->sort(),
+            TD::make('flag', 'Flag')->render(function (Country $country) {
+                return "<img src='{$country->getFlagUrl()}' width='40' class='bg-light' alt='{$country->flag}'> $country->flag";
+            }),
             TD::make('code', 'Code'),
             TD::make('votable', 'Can be voted for'),
             TD::make('voter_name', 'Voter name'),
-            TD::make('name', 'Name'),
-            TD::make('flag', 'Flag'),
             TD::make('song_name', 'Song name'),
             TD::make('song_seq', 'Song sequence')->sort(),
             TD::make('votes', 'Votes'),
