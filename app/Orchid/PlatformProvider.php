@@ -29,6 +29,11 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Country list')
                 ->icon('list')
                 ->route('platform.country.list'),
+            Menu::make(__('Users'))
+                ->icon('user')
+                ->route('platform.systems.users')
+                ->permission('platform.systems.users')
+                ->title(__('Access rights')),
             /*
             Menu::make('Example screen')
                 ->icon('monitor')
