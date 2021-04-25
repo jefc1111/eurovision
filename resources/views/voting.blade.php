@@ -8,7 +8,7 @@
     <div class="row">
       <span>
         <h3>Welcome, {{ $votingCountry->voter_name }}, representative of {{ $votingCountry->name }}
-          <img class="float-right" src="{{ $votingCountry->getFlagUrl() }}">
+          <img id="voter-flag" class="float-right" src="{{ $votingCountry->getFlagUrl() }}">
         </h3>
       </span>
       @if($votingCountry->voting_complete)
@@ -60,8 +60,9 @@
     <button disabled id="trigger-confirmation-modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmation-modal">
         Submit final scores
     </button>
+    
     @endif
-    <img src="{{ asset('assets/icons/network_internet_pcs_installer-2.png') }}" class="float-right spinner">
+    <img id="save-spinner" src="https://static.eurovision.tv/dist/assets/images/esc_trophy.c18806541a73cace837abd353b64f12c.svg" class="float-right spinner">
     <span id="data-saving" class="float-right">Saving...</span>
     <span id="data-saved" class="float-right">All data saved</span>
     <span id="data-error" class="float-right">Error saving data - please contact Paul</span>
@@ -70,10 +71,10 @@
   <footer class="taskbar">
       <div class="row" style="margin-right: 0px;">
           <div class="col-8">
-              <a href="#" class="btn start-button"><img src="{{ asset('assets/icons/windows_title-1.png') }}" class="icon-16">Start</a>
+              
           </div>
           <div class="col-4 time">
-              <a href="#" class="btn start-button"><img src="{{ asset('assets/icons/usb-1.png') }}" class="icon-16"></a>
+              
           </div>
       </div>
   </footer>
@@ -174,7 +175,7 @@ li {
   height: 32px;
   border: 1px solid #ccc;
   padding: 2px;
-  background: rgba(255,255,255,0.7);
+  background: #174ebe;
 }
 
 ul.countries li {
@@ -190,6 +191,10 @@ ul.countries li:hover {
 
 ul.scores li {
   width: 40px;
+}
+
+ul.countries li {
+  width: 400px;
 }
 
 li img {

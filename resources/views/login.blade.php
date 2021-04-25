@@ -6,9 +6,9 @@
 <body>
   <div class="container">
       <div class="col-md-10 col-sm-12">
-          <div class="card mb-4">
+          <div id="login-box" class="card mb-4">
               <div class="card-header">
-                  <h4 class="my-0 font-weight-normal">Eurovision 2021 - the pandemic continues</h4>
+                  <h4 class="my-0 font-weight-normal">Eurovision 2021</h4>
               </div>
               <div class="card-body">
                   <form action="{{ url('voting') }}" method="post">
@@ -35,6 +35,7 @@
               </div>
           </div>
       </div>
+      <img src="https://static.eurovision.tv/dist/assets/images/esc/2021/symbol.6a580cb72aa8cbc8aefd12cd960a0135.svg" alt="Symbol">
   </div>
 </body>
 @endsection

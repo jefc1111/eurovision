@@ -29,7 +29,8 @@ class Country extends Model
 
     public function getFlagUrl()
     {
-        return 'https://www.worldometers.info/img/flags/' . $this->flag . '-flag.gif';
+        return '/flags/small/'.strtoupper($this->flag).'.bmp';
+        //return 'https://www.worldometers.info/img/flags/' . $this->flag . '-flag.gif';
     }
 
     public function hasVotes(): bool
