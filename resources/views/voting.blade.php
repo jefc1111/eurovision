@@ -45,7 +45,10 @@
             <img class="float-right" src="{{ $country->getFlagUrl() }}">
           </span>
           <span class="country-details">
-            "{{ $country->song_name }}" (Song {{ $country->song_seq }})
+            "{{ $country->song_name }}" (Song {{ $country->song_seq }})            
+          </span>
+          <span class="now-playing" style="padding-left: 20px; display: none;">
+            <i class="bi bi-music-note-list"></i>
           </span>
         </li>
         @endforeach
@@ -152,8 +155,12 @@ function doPoll() {
 
         $("ul.countries li").removeClass("highlighted");
 
+        $(".now-playing").hide();
+
         highlightedCountries.forEach(c => {
           $("ul.countries li[data-id=" + c.id + "]").addClass("highlighted");
+
+          $("ul.countries li[data-id=" + c.id + "]").find(".now-playing").show();
         });
 
         setTimeout(doPoll,5000);
@@ -240,11 +247,6 @@ span#data-saving, span#data-error {
 
 .country-details {
   font-size: 0.85rem;
-}
-
-.highlighted {
-  background: rgb(253, 242, 196);
-  color: black;
 }
 
 @keyframes spin {

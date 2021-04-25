@@ -39,3 +39,9 @@ ul.countries li:last-child {
   border-radius: 0 0 8px 0;
 }
 
+.highlighted {
+  background: #fdf2c4;
+  color: black;
+  transition: background-color 1000ms linear;
+}
+

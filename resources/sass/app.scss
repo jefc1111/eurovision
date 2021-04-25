@@ -1,6 +1,7 @@
 $dark-blue: rgb(13, 28, 59);
 $med-blue: rgb(11, 64, 133);
 $light-blue: rgb(2, 123, 241);
+$gold: rgb(253, 242, 196);
 
 body {
     background: #090a2e;
@@ -40,4 +41,12 @@ ul.countries li:first-child {
 
 ul.countries li:last-child {
     border-radius: 0 0 8px 0;
+}
+
+.highlighted {
+    background: $gold;
+    color: black;
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
