@@ -24,9 +24,10 @@
       </h4>
       @endif
     </div>
-    @if($votingAllowed)
+    @if($votingAllowed)    
+    <i style="font-size: 0.8em; font-weight: 1000;" class="bi bi-arrow-90deg-down"></i>&nbsp;&nbsp;<span>Points awarded</span><br>
     <div class="row">
-      <div class="col-xs">
+      <div class="col-xs">        
         <ul class="list-unstyled scores float-right">
           @foreach($scores as $score)
           <li class="font-weight-bold">
@@ -58,7 +59,7 @@
     @if($votingAllowed)
     @if(! $votingCountry->voting_complete)
     <button disabled id="trigger-confirmation-modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmation-modal">
-        Submit final scores
+        Submit final scores <i class="bi bi-check2-all"></i>
     </button>
     
     @endif
@@ -149,10 +150,10 @@ function doPoll() {
     $.post('/vote-page-poll', function(data) {
         const highlightedCountries = data.filter(c => c.highlight);
 
-        $("ul.countries li").removeClass("bg-success");
+        $("ul.countries li").removeClass("highlighted");
 
         highlightedCountries.forEach(c => {
-          $("ul.countries li[data-id=" + c.id + "]").addClass("bg-success");
+          $("ul.countries li[data-id=" + c.id + "]").addClass("highlighted");
         });
 
         setTimeout(doPoll,5000);
@@ -165,20 +166,37 @@ doPoll();
 
 <style>
 @if($votingCountry->voting_complete)
+ul li:nth-child(1) {
+  background: gold;
+}
+ul li:nth-child(2) {
+  background: silver;
+}
+ul li:nth-child(3) {
+  background: rgb(205, 127, 50);
+}
 ul li:nth-child(-n+3) {
-  background: yellow;
+  color: black;
 }
 @endif
 
 li {
   padding: 0;
   height: 32px;
-  border: 1px solid #ccc;
+  border-style: solid;
+  border-width: 1px 1px 0 0;
+  border-color: black;
   padding: 2px;
   background: #174ebe;
 }
 
+ul.scores li {
+  padding-right: 8px;
+  text-align: right;
+}
+
 ul.countries li {
+  padding: 0 8px;
   width: 100%;
   max-width: 500px;
 }
@@ -222,6 +240,11 @@ span#data-saving, span#data-error {
 
 .country-details {
   font-size: 0.85rem;
+}
+
+.highlighted {
+  background: rgb(253, 242, 196);
+  color: black;
 }
 
 @keyframes spin {

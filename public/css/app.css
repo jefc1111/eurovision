@@ -18,3 +18,24 @@ img#voter-flag {
   background: #174ebe;
 }
 
+#trigger-confirmation-modal {
+  color: white !important;
+  background: #0b4085;
+}
+
+ul.scores li:first-child {
+  border-radius: 8px 0 0 0;
+}
+
+ul.scores li:last-child {
+  border-radius: 0 0 0 8px;
+}
+
+ul.countries li:first-child {
+  border-radius: 0 8px 0 0;
+}
+
+ul.countries li:last-child {
+  border-radius: 0 0 8px 0;
+}
+

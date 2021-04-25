@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
+        "martbock/laravel-diceware": "^1.0",
         "orchid/platform": "^10.1"
     },
     "require-dev": {

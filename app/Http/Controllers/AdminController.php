@@ -28,7 +28,7 @@ class AdminController extends Controller
         $countries = Country::all();
 
         $countries->each(function($c) {
-            $c->code = rand(100000, 999999);
+            $c->code = \Martbock\Diceware\Facades\Diceware::generate(); //rand(100000, 999999);
 
             $c->save();
         });
