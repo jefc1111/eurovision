@@ -177,7 +177,7 @@ ul li:nth-child(1) {
   background: gold;
 }
 ul li:nth-child(2) {
-  background: silver;
+  background: #aaa9ad;
 }
 ul li:nth-child(3) {
   background: rgb(205, 127, 50);

@@ -3,10 +3,31 @@ $med-blue: rgb(11, 64, 133);
 $light-blue: rgb(2, 123, 241);
 $gold: rgb(253, 242, 196);
 
+@font-face {
+    font-family: 'gotham_boldregular';
+    src: url('/fonts/gotham_bold_regular-webfont.woff2') format('woff2'),
+         url('/fonts/gotham_bold_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gothambook';
+    src: url('/fonts/gotham_book_regular-webfont.woff2') format('woff2'),
+         url('/fonts/gotham_book_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background: #090a2e;
     color: #fff;
-    font-family: HKGrotesk,system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-family: gothambook;//HKGrotesk,system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: gotham_boldregular;
 }
 
 #save-spinner {
