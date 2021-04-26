@@ -3,7 +3,7 @@
 @section('title', 'Eurovision 2020 - voting')
 
 @section('body')
-<body class="bg-cloud">
+<body class="voting-bg">
   <div class="container">
     <div class="row">
       <span>
@@ -203,7 +203,7 @@ ul.scores li {
 }
 
 ul.countries li {
-  padding: 0 8px;
+  padding: 3px 8px;
   width: 100%;
   max-width: 500px;
 }
@@ -220,10 +220,6 @@ ul.scores li {
 
 ul.countries li {
   width: 400px;
-}
-
-li img {
-  height: 28;
 }
 
 div.col-sm {

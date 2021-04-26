@@ -3,7 +3,7 @@
 @section('title', 'Eurovision 2020 - voter login')
 
 @section('body')
-<body>
+<body class='login-bg'>
   <div class="container">
       <div class="col-md-10 col-sm-12">
           <div id="login-box" class="card mb-4">
@@ -35,7 +35,6 @@
               </div>
           </div>
       </div>
-      <img src="https://static.eurovision.tv/dist/assets/images/esc/2021/symbol.6a580cb72aa8cbc8aefd12cd960a0135.svg" alt="Symbol">
   </div>
 </body>
 @endsection

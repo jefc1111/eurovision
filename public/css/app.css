@@ -13,9 +13,20 @@
 }
 
 body {
-  background: #090a2e;
+  background-color: #0d1c3b;
   color: #fff;
   font-family: gothambook;
+}
+
+body.login-bg {
+  background: #0d1c3b url("/assets/gfx/logo_full_frame.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+body.voting-bg {
+  background: url("/assets/gfx/seamless_bg.jpg");
+  background-size: cover;
 }
 
 h1,
@@ -32,13 +43,18 @@ h6 {
   padding: 8px;
 }
 
+li img {
+  border: 1px solid #027bf1;
+  height: 24px;
+}
+
 img#voter-flag {
   padding: 0 10px;
 }
 
 #confirmation-modal .modal-content,
 #login-box {
-  background: #174ebe;
+  background: rgba(23, 78, 190, 0.85);
 }
 
 #trigger-confirmation-modal {
