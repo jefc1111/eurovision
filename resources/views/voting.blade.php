@@ -64,12 +64,22 @@
     <button disabled id="trigger-confirmation-modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmation-modal">
         Submit final scores <i class="bi bi-check2-all"></i>
     </button>
-    
-    @endif
-    <img id="save-spinner" src="https://static.eurovision.tv/dist/assets/images/esc_trophy.c18806541a73cace837abd353b64f12c.svg" class="float-right spinner">
-    <span id="data-saving" class="float-right">Saving...</span>
-    <span id="data-saved" class="float-right">All data saved</span>
-    <span id="data-error" class="float-right">Error saving data - please contact Paul</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img id="save-spinner" src="https://static.eurovision.tv/dist/assets/images/esc_trophy.c18806541a73cace837abd353b64f12c.svg" class="spinner">
+    <span id="data-saving" class="">Saving...</span>
+    <span id="data-saved" class="">Votes saved</span>
+    <span id="data-error" class="">Error saving data - please contact Paul</span>
+    @else
+    <div class="row">
+      <div>
+        <p>
+          Voting app built by <a target="_blank" href="https://github.com/jefc1111">Geoff</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="" target="_blank" href="https://www.buymeacoffee.com/jefc1111">Buy me a coffee! <i class="bi bi-cup"></i></a>
+        </p>
+      </div>
+    </div>
+    @endif  
     @endif
   </div>
   <footer class="taskbar">
@@ -232,7 +242,7 @@ span#data-saving, span#data-error {
 
 .spin {  
   animation-name: spin;
-  animation-duration: 300ms;
+  animation-duration: 500ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear; 
   /* transform: rotate(3deg); */

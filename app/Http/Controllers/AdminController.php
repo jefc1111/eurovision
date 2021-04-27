@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function generateCodes()
     {
         if (env('DB_LOCKED', true)) {
-            abort('403', 'Temporarily disabled');
+            abort('403', 'Temporarily disabled (DB_LOCKED)');
         }        
 
         $countries = Country::all();
@@ -55,7 +55,7 @@ class AdminController extends Controller
     public function resetVoteData()
     {
         if (env('DB_LOCKED', true)) {
-            abort('403', 'Temporarily disabled');
+            abort('403', 'Temporarily disabled (DB_LOCKED)');
         }        
         
         Country::query()->update([

@@ -49,4 +49,6 @@ Route::get('the-secret-admin-page/{sortBy?}/{votableOnly?}', 'AdminController@in
 
 Route::get('export', 'AdminController@export');
 
+Route::get('export-raw', 'AdminController@export_raw');
+
 Route::get('generate-codes', 'AdminController@generateCodes');

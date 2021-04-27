@@ -26,6 +26,10 @@ class VotingController extends Controller
     {
         $votingCountry = Country::where('code', '=', $secretCode)->first();
 
+        if (! $votingCountry) {
+            abort('403', 'Code not recognised');
+        }
+
         $countries = $votingCountry->hasVotes() ? $votingCountry->getVotedCountries() : Country::where('votable', '=', 1)->get()->shuffle();
         
         $scores = [12, 10, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
