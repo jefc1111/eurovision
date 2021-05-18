@@ -70,7 +70,7 @@ class AdminController extends Controller
     {
         $headers = array(
             "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=eurovision-2020.csv",
+            "Content-Disposition" => "attachment; filename=eurovision-2021.csv",
             "Pragma" => "no-cache",
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0",
@@ -101,7 +101,7 @@ class AdminController extends Controller
             return $return;
         }
 
-        $filename = 'eurovision-2020-export-'.time().'.csv';
+        $filename = 'eurovision-2021-export-'.time().'.csv';
 
         $filepath = 'public/'.$filename;
 

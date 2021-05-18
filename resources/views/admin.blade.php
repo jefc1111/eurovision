@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Eurovision 2020 - private admin')
+@section('title', 'Eurovision 2021 - private admin')
 
 @section('sidebar')
     @parent

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Eurovision 2020 - voter login')
+@section('title', 'Eurovision 2021 - voter login')
 
 @section('body')
 <body class='login-bg'>
