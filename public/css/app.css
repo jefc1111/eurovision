@@ -79,7 +79,7 @@ ul.countries li:last-child {
 }
 
 .highlighted {
-  background: #ffc935;
+  background: #ff8eec;
   color: black;
   transition: background-color 1000ms linear;
 }
