@@ -185,7 +185,9 @@ doPoll();
 @if($votingCountry->voting_complete)
 ul li:nth-child(1) {
   background: gold;
+  color: black;
 }
+/*
 ul li:nth-child(2) {
   background: #aaa9ad;
 }
@@ -195,6 +197,7 @@ ul li:nth-child(3) {
 ul li:nth-child(-n+3) {
   color: black;
 }
+*/
 @endif
 
 li {
