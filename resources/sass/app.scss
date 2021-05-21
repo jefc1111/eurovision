@@ -2,6 +2,7 @@ $dark-blue: rgb(95,8,100);
 $med-blue: rgb(8,77,190);
 $light-blue: rgb(24,180,235);
 $gold: rgb(255,201,53);
+$light-pink: rgb(255,142,236);
 
 @font-face {
     font-family: 'gotham_boldregular';
@@ -81,7 +82,7 @@ ul.countries li:last-child {
 }
 
 .highlighted {
-    background: $gold;
+    background: $light-pink;
     color: black;
     -webkit-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
