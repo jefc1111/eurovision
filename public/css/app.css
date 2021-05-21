@@ -13,19 +13,19 @@
 }
 
 body {
-  background-color: #0d1c3b;
+  background-color: #5f0864;
   color: #fff;
   font-family: gothambook;
 }
 
 body.login-bg {
-  background: #0d1c3b url("/assets/gfx/logo_full_frame.jpg") no-repeat;
+  background: #5f0864 url("/assets/gfx/logo_full_frame.jpg") no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 body.voting-bg {
-  background: url("/assets/gfx/seamless_bg.jpg");
+  background: url("/assets/gfx/new-bg.png");
   background-size: cover;
 }
 
@@ -44,7 +44,7 @@ h6 {
 }
 
 li img {
-  border: 1px solid #027bf1;
+  border: 1px solid #18b4eb;
   height: 24px;
 }
 
@@ -59,7 +59,7 @@ img#voter-flag {
 
 #trigger-confirmation-modal {
   color: white !important;
-  background: #0b4085;
+  background: #084dbe;
 }
 
 ul.scores li:first-child {
@@ -79,7 +79,7 @@ ul.countries li:last-child {
 }
 
 .highlighted {
-  background: #fdf2c4;
+  background: #ffc935;
   color: black;
   transition: background-color 1000ms linear;
 }

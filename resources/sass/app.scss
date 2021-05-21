@@ -1,7 +1,7 @@
-$dark-blue: rgb(13, 28, 59);
-$med-blue: rgb(11, 64, 133);
-$light-blue: rgb(2, 123, 241);
-$gold: rgb(253, 242, 196);
+$dark-blue: rgb(95,8,100);
+$med-blue: rgb(8,77,190);
+$light-blue: rgb(24,180,235);
+$gold: rgb(255,201,53);
 
 @font-face {
     font-family: 'gotham_boldregular';
@@ -33,7 +33,7 @@ body.login-bg {
 }
 
 body.voting-bg {
-    background: url("/assets/gfx/seamless_bg.jpg");  
+    background: url("/assets/gfx/new-bg.png");  
     background-size: cover; 
 }
 
