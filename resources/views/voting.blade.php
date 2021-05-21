@@ -47,7 +47,7 @@
           <span class="country-details">
             "{{ $country->song_name }}" (Song {{ $country->song_seq }})            
           </span>
-          <span class="now-playing" style="padding-left: 20px; display: none;">
+          <span class="now-playing" style="padding: 5px 4px 0 0; float: right; display: none;">
             <i class="bi bi-music-note-list"></i>
           </span>
         </li>
