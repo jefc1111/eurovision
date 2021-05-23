@@ -24,11 +24,7 @@ Votes submitted
 Orchid CMS back end
 ![product-screenshot-4][product-screenshot-4]
 
-Custom back end (pre-Orchid)
-![product-screenshot-5][product-screenshot-5]
-
-[product-screenshot-1]: readme_images/screenshots_290421/1_eurovision-app-login-page.png
-[product-screenshot-2]: readme_images/screenshots_290421/2_eurovision-app-voting-in-progress.png
-[product-screenshot-3]: readme_images/screenshots_290421/3_eurovision-app-voting-complete.png
-[product-screenshot-4]: readme_images/screenshots_290421/4_eurovision-app-back-end.png
-[product-screenshot-5]: readme_images/screenshots_290421/5_eurovision-app-back-end-2.png
+[product-screenshot-1]: readme_images/1_eurovision-app-login-page.png
+[product-screenshot-2]: readme_images/2_eurovision-app-voting-in-progress.png
+[product-screenshot-3]: readme_images/3_eurovision-app-voting-complete.png
+[product-screenshot-4]: readme_images/4_eurovision-app-back-end.png
